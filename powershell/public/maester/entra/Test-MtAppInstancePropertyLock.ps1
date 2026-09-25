@@ -26,7 +26,7 @@
 
     try {
         # Get all multitenant applications (service principals with appOwnerOrganizationId not equal to current tenant)
-        $multiTenantApps = @(Invoke-MtGraphRequest -RelativeUri 'servicePrincipals?$filter=appOwnerOrganizationId ne null and appOwnerOrganizationId ne \'Microsoft Corporation\'&$select=id,displayName,appId,appOwnerOrganizationId,servicePrincipalNames' -ErrorAction Stop)
+        $multiTenantApps = @(Invoke-MtGraphRequest -RelativeUri 'servicePrincipals?$filter=appOwnerOrganizationId ne null and appOwnerOrganizationId ne \"f8cdef31-a31e-4b4a-93e4-5f571e91255a\"&$select=id,displayName,appId,appOwnerOrganizationId,servicePrincipalNames' -ErrorAction Stop)
 
         Write-Verbose "Found $($multiTenantApps.Count) multitenant service principals."
 
