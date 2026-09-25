@@ -32,9 +32,9 @@
         $pwWritebackDisabled = $true
 
         if ($syncConfig -and $syncConfig.value) {
-            foreach ($profile in $syncConfig.value) {
-                if ($profile.type -eq 'passwordHashSync') {
-                    $phsEnabled = $profile.state -eq 'enabled'
+            foreach ($syncProfile in $syncConfig.value) {
+                if ($syncProfile.type -eq 'passwordHashSync') {
+                    $phsEnabled = $syncProfile.state -eq 'enabled'
                 }
             }
         }
@@ -42,9 +42,9 @@
         # Check password writeback
         $pwWritebackConfig = Invoke-MtGraphRequest -RelativeUri 'onPremisesPublishingProfiles?$filter=type eq \'passwordWriteback\'' -ErrorAction SilentlyContinue
         if ($pwWritebackConfig -and $pwWritebackConfig.value) {
-            foreach ($profile in $pwWritebackConfig.value) {
-                if ($profile.type -eq 'passwordWriteback') {
-                    $pwWritebackDisabled = $profile.state -ne 'enabled'
+            foreach ($pwProfile in $pwWritebackConfig.value) {
+                if ($pwProfile.type -eq 'passwordWriteback') {
+                    $pwWritebackDisabled = $pwProfile.state -ne 'enabled'
                 }
             }
         }
