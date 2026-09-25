@@ -52,8 +52,8 @@
 
             $result = "| Profile | Failure Rate |`n"
             $result += "| --- | --- |`n"
-            foreach ($item in $highFailureProfiles) {
-                $result += "| $($item.ProfileName) | $($item.FailureRate) |`n"
+            foreach ($p in $highFailureProfiles) {
+                $result += "| $($p.ProfileName) | $($p.FailureRate) |`n"
             }
             $testResultMarkdown = $testResultMarkdown -replace '%TestResult%', $result
         }
